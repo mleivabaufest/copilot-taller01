@@ -15,7 +15,7 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_SECONDS = 300
 
 # In-memory user store for demonstration purposes.
-# In a production environment this should be replaced by a real database.
+# In a production environment, this should be replaced by a real database.
 USERS_DB = {
     "admin": {
         "username": "admin",
