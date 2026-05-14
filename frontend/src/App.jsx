@@ -1,6 +1,63 @@
 import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import './App.css'
 
+const CERTIFICATIONS = [
+  {
+    exam: 'AZ-900',
+    name: 'Microsoft Azure Fundamentals',
+    level: 'beginner',
+    levelLabel: 'Principiante',
+    description:
+      'Demuestra conocimiento fundamental de conceptos cloud, servicios principales de Azure, y herramientas de administración y gobernanza.',
+    url: 'https://learn.microsoft.com/credentials/certifications/azure-fundamentals/',
+  },
+  {
+    exam: 'AI-900',
+    name: 'Microsoft Azure AI Fundamentals',
+    level: 'beginner',
+    levelLabel: 'Principiante',
+    description:
+      'Demuestra conceptos fundamentales de IA relacionados con el desarrollo de software y servicios de Microsoft Azure para crear soluciones de IA.',
+    url: 'https://learn.microsoft.com/credentials/certifications/azure-ai-fundamentals/',
+  },
+  {
+    exam: 'AI-102',
+    name: 'Azure AI Engineer Associate',
+    level: 'intermediate',
+    levelLabel: 'Intermedio',
+    description:
+      'Diseña e implementa soluciones de IA en Azure utilizando Azure AI Services, Azure AI Search y Azure OpenAI.',
+    url: 'https://learn.microsoft.com/credentials/certifications/azure-ai-engineer/',
+  },
+  {
+    exam: 'AZ-204',
+    name: 'Azure Developer Associate',
+    level: 'intermediate',
+    levelLabel: 'Intermedio',
+    description:
+      'Construye soluciones end-to-end en Microsoft Azure: Azure Functions, aplicaciones web, soluciones con almacenamiento Azure y más.',
+    url: 'https://learn.microsoft.com/credentials/certifications/azure-developer/',
+  },
+  {
+    exam: 'SC-900',
+    name: 'Security, Compliance & Identity Fundamentals',
+    level: 'beginner',
+    levelLabel: 'Principiante',
+    description:
+      'Demuestra conocimiento fundamental de seguridad, cumplimiento e identidad y soluciones de seguridad y cumplimiento de Microsoft.',
+    url: 'https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals/',
+  },
+  {
+    exam: 'AZ-305',
+    name: 'Azure Solutions Architect Expert',
+    level: 'expert',
+    levelLabel: 'Experto',
+    description:
+      'Diseña soluciones cloud e híbridas en Microsoft Azure, incluyendo compute, redes, almacenamiento, monitoreo e infraestructura.',
+    url: 'https://learn.microsoft.com/credentials/certifications/azure-solutions-architect/',
+  },
+]
+
 const LOGIN_PATH = '/login'
 const WELCOME_PATH = '/welcome'
 const SESSION_KEY = 'compliance-platform-session'
@@ -263,6 +320,32 @@ function App() {
           </section>
         </main>
       </div>
+
+      {isWelcomePage && (
+        <section className="certifications-section">
+          <h2 className="certifications-title">Certificaciones Microsoft 2026</h2>
+          <div className="certifications-grid">
+            {CERTIFICATIONS.map((cert) => (
+              <article key={cert.exam} className="cert-card">
+                <div className="cert-card-header">
+                  <span className="cert-exam">{cert.exam}</span>
+                  <span className={`cert-level cert-level-${cert.level}`}>{cert.levelLabel}</span>
+                </div>
+                <h3 className="cert-name">{cert.name}</h3>
+                <p className="cert-description">{cert.description}</p>
+                <a
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cert-link"
+                >
+                  Ver certificación →
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }
